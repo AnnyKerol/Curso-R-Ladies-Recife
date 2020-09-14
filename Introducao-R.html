@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introdução ao R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="" />
+    <meta name="date" content="2020-09-13" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Introdução ao R
+### R Ladies Recife
+### 2020-09-13
+
+---
+
+
+class: top, left
+
+# O que é o R?
+
+&gt; "R é um ambiente de software livre para computação estatística e gráficos" (https://www.r-project.org/). 
+
+&lt;br&gt;
+### Algumas Vantagens
+1. Open Source
+
+2. Vasta comunidade de usuários
+
+3. Cross Platform Compatible (Unix/Linux, Mac e Windows)
+
+4. Integração com outras linguagens (Python, C, SQL etc. )
+
+&lt;img src="R_logo.png" width="20%" style="display: block; margin: auto;" /&gt;
+
+---
+background-image: url(R_logo.png)
+background-position: 90% 10% 
+background-size: 20%
+
+
+
+class: top, left
+
+# O que é possível fazer com o R?
+
+&lt;br&gt;
+
+1. Análise de dados - Estatística, modelagem, etc.
+
+2. Visualização de dados
+
+3. Relatórios dinâmicos
+
+4. Apresentações
+
+5. Mineração de dados
+
+6. E muito mais ...
+
+
+
+---
+class: inverse, center, middle
+
+# Primeiros Passos
+
+---
+
+# Instalação do R + Rstudio
+
+A versão mais recente da linguagem R pode ser baixada em https://www.r-project.org/:
+&lt;br&gt;
+- [Download R for Linux](https://vps.fmvz.usp.br/CRAN/)
+
+- [Download R for MAC](https://vps.fmvz.usp.br/CRAN/)
+
+- [Download R for Windows](https://vps.fmvz.usp.br/CRAN/)
+&lt;br&gt;
+### RStudio
+
+A plataforma Rstudio foi desenhada para rodar códigos da linguagem R.
+Você pode baixar em [RStudio IDE](https://rstudio.com/products/rstudio/download/#download).
+
+
+---
+### Arquivos
+
+O R gera alguns tipos de arquivos que podem ser salvos. As principais deles são:
+
+- **.R** -Usado para salvar códigos criados e rotinas de análises (scripts).
+
+- **.RData** - Usado para salvar os objetos da área de trabalho (workspace).
+
+- **.Rhistory** - Usado para salvar o histórico dos comandos executados (normalmente salvo automaticamente).
+
+- **.Rproj** - Formato exclusivo do RStudio, serve para salvar todas as informações utilizadas anteriormente pelo RStudio de maneira simplificada.
+
+### Área de trabalho e diretório de trabalho
+
+- getwd() # Mostrar o diretório de trabalho atual
+
+- dir()   # Listar os arquivos do diretório
+
+- setwd() # Mudar o diretório de trabalho
+
+
+---
+
+### Help!
+
+- Pedir ajuda: **help**(nome_da_função) ou **?**(nome_da_função)
+
+
+```r
+?mean()
+```
+
+### Pacotes no R
+
+**1. Instalar**
+
+- Via CRAN 
+
+```r
+install.packages("tidyverse")
+```
+
+- Via GitHub
+
+
+```r
+devtools::install_github("tidyverse/purr") 
+```
+
+---
+**2. Carregar**
+
+- library(nome_do_pacote)
+
+
+```r
+library(tidyverse)
+```
+
+- require(nome_do_pacote)
+
+
+```r
+require(tidyverse)
+```
+
+### Atalhos 
+
+- CTRL + ENTER: roda a linha selecionada no script.
+
+- ALT + -: (&lt;-) sinal de atribuição.
+
+---
+ ### Sintaxe Básica dos Comandos
+
+
+```r
+2+2 # Adição
+```
+
+```
+## [1] 4
+```
+
+```r
+3-1 # subtração
+```
+
+```
+## [1] 2
+```
+
+```r
+4/2 # divisão
+```
+
+```
+## [1] 2
+```
+
+```r
+5*3 # multiplicação
+```
+
+```
+## [1] 15
+```
+
+---
+
+ ### Sintaxe Básica dos Comandos
+
+
+```r
+9 %% 5   # resto da divisão de 9 por 5
+```
+
+```
+## [1] 4
+```
+
+```r
+7 %/% 4  # parte inteira da divisão de 7  por 4 
+```
+
+```
+## [1] 1
+```
+
+```r
+4^ 2    # potenciação
+```
+
+```
+## [1] 16
+```
+
+```r
+sqrt(16) # radiciação
+```
+
+```
+## [1] 4
+```
+
+
+- O sinal `\(&gt;\)` indica que o R está pronto para receber um comando.
+- O sinal `\(+\)` é o estado de espera, indica que o usuário enviou um comando incompleto.
+
+---
+
+### Atribuição de Objetos no R
+
+Os objetos dentro do R podem ser salvos temporariamente na área de trabalho (workspace). Para atribuir um objeto utilizamos:
+
+O atalho ALT + `\(-\)` que gera o operador `\(&lt;-\)`, ou o símbolo de igual `\((=)\)`
+
+- **nome_do_objeto** `\(&lt;-\)` valor
+- **nome_do_objeto** `\(=\)` valor
+
+
+```r
+x &lt;- 15
+x
+```
+
+```
+## [1] 15
+```
+
+```r
+disciplina &lt;- "Aprendizagem Estatística"
+disciplina
+```
+
+```
+## [1] "Aprendizagem Estatística"
+```
+
+```r
+Saldo &lt;- TRUE
+Saldo
+```
+
+```
+## [1] TRUE
+```
+
+---
+
+### Tipos de objetos e Estruturas de Dados
+
+- Character: texto
+
+
+```r
+nome &lt;- "Ana"
+nome  # sempre com aspas
+```
+
+```
+## [1] "Ana"
+```
+
+```r
+class(nome)
+```
+
+```
+## [1] "character"
+```
+
+
+- Numeric: números racionais ou inteiros
+
+```r
+y &lt;- 4.5
+y
+```
+
+```
+## [1] 4.5
+```
+
+```r
+class(y)
+```
+
+```
+## [1] "numeric"
+```
+
+---
+
+### Tipos de objetos e Estruturas de Dados
+
+- Logical: TRUE, FALSE ou NA
+
+```r
+ordem &lt;- TRUE
+ordem
+```
+
+```
+## [1] TRUE
+```
+
+```r
+class(TRUE)
+```
+
+```
+## [1] "logical"
+```
+
+- Complex: números complexos 
+
+```r
+numero &lt;- 4+5i
+numero
+```
+
+```
+## [1] 4+5i
+```
+
+```r
+class(numero)
+```
+
+```
+## [1] "complex"
+```
+
+---
+
+### Tipos de objetos e Estruturas de Dados
+
+- Factor: variavéis categóricas
+
+
+```r
+Ordem &lt;- c("Compra", "Venda")
+Ordem &lt;- as.factor(Ordem) 
+Ordem
+```
+
+```
+## [1] Compra Venda 
+## Levels: Compra Venda
+```
+
+A função as.factor() transforma a variável Ordem em um fator.
+
+Levels: Refere-se aos rótulos da variável Ordem.
+
+&lt;img src="forcats.png" width="20%" style="display: block; margin: auto;" /&gt;
+
+O pacote [forcats](https://forcats.tidyverse.org/) é ideal para trabalhar com este tipo de variável.
+
+---
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="data_structures.png" alt="&amp;lt;center&amp;gt;&amp;lt;b&amp;gt;Fonte: &amp;lt;a href='https://mgimond.github.io/ES218/Week02a.html#data_structures'&amp;gt;Manny Gimond (2020)&amp;lt;/a&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/center&amp;gt;" width="75%" /&gt;
+&lt;p class="caption"&gt;&lt;center&gt;&lt;b&gt;Fonte: &lt;a href='https://mgimond.github.io/ES218/Week02a.html#data_structures'&gt;Manny Gimond (2020)&lt;/a&gt;&lt;/b&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+
+- **Vetor**: Armazena elementos de mesmo tipo e/ ou classe. Um vetor pode ser criado usando a função c().
+
+- **Matriz**: Matrizes em R podem ser pensadas como vetores indexados usando dois índices em vez de um. São estruturas bidimensionais.
+
+- **Data Frame**: São tabelas de dados com linhas e colunas, como uma tabela do Excel. Pode conter diferentes tipos de dados (numérico, fator, …).
+- **Listas**: Uma lista é um conjunto ordenado de componentes armazenados em um vetor 1D.
+
+---
+
+### Tipos de objetos e Estruturas de Dados
+
+
+```r
+vetor &lt;- c(1.2,2.5,3.7,4,5)
+length(vetor) # retorna o tamanho do vetor
+```
+
+```
+## [1] 5
+```
+
+```r
+vetor[3] # acessando o elemento da terceira posição do meu vetor
+```
+
+```
+## [1] 3.7
+```
+
+```r
+matriz &lt;- matrix(1:12, nrow = 3, ncol = 4, byrow = TRUE)
+matriz
+```
+
+```
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    2    3    4
+## [2,]    5    6    7    8
+## [3,]    9   10   11   12
+```
+
+```r
+dim(matriz) # retorna a dimensão da matriz
+```
+
+```
+## [1] 3 4
+```
+
+---
+### Tipos de objetos e Estruturas de Dados
+
+```r
+matriz[1,2]  # acessa o elemento da linha 1 coluna 2
+```
+
+```
+## [1] 2
+```
+
+```r
+matriz[1,]   # acessa todos os elementos da linha 1
+```
+
+```
+## [1] 1 2 3 4
+```
+
+```r
+matriz[,2]  # acessa todos os elementos da coluna 2
+```
+
+```
+## [1]  2  6 10
+```
+
+```r
+dados &lt;- data.frame(ano = 2000:2004,
+                 prod = c(32, 54, 25, 48, 29))
+dados
+```
+
+```
+##    ano prod
+## 1 2000   32
+## 2 2001   54
+## 3 2002   25
+## 4 2003   48
+## 5 2004   29
+```
+
+---
+
+### Tipos de objetos e Estruturas de Dados
+
+
+```r
+dim(dados) # dimensãoes do data frame
+```
+
+```
+## [1] 5 2
+```
+
+```r
+str(dados) # tipos de variáveis no data frame 
+```
+
+```
+## 'data.frame':	5 obs. of  2 variables:
+##  $ ano : int  2000 2001 2002 2003 2004
+##  $ prod: num  32 54 25 48 29
+```
+
+```r
+dados[,1]
+```
+
+```
+## [1] 2000 2001 2002 2003 2004
+```
+
+```r
+dados[,2]
+```
+
+```
+## [1] 32 54 25 48 29
+```
+
+
+---
+
+### Tipos de objetos e Estruturas de Dados
+
+
+```r
+minha_lista &lt;- list() # cria uma lista vazia
+
+ls() # lista todos os objetos 
+```
+
+```
+##  [1] "dados"       "disciplina"  "matriz"      "minha_lista" "nome"       
+##  [6] "numero"      "ordem"       "Ordem"       "Saldo"       "vetor"      
+## [11] "x"           "y"
+```
+
+```r
+minha_lista[[1]] &lt;- dados 
+minha_lista[[2]] &lt;-matriz
+minha_lista[[3]] &lt;-vetor
+```
+---
+### Tipos de objetos e Estruturas de Dados
+
+```r
+minha_lista
+```
+
+```
+## [[1]]
+##    ano prod
+## 1 2000   32
+## 2 2001   54
+## 3 2002   25
+## 4 2003   48
+## 5 2004   29
+## 
+## [[2]]
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    2    3    4
+## [2,]    5    6    7    8
+## [3,]    9   10   11   12
+## 
+## [[3]]
+## [1] 1.2 2.5 3.7 4.0 5.0
+```
+
+```r
+minha_lista[[3]] # acessando o vetor na lista
+```
+
+```
+## [1] 1.2 2.5 3.7 4.0 5.0
+```
+
+```r
+minha_lista[[3]][5] # acessando a posição 5 do vetor na lista
+```
+
+```
+## [1] 5
+```
+---
+
+### Um pouco mais sobre data frames
+
+- head(): Mostra o cabeçalho do data frame.
+
+- tail(): Mostra as últimas linhas do data frame.
+
+- names(): Apresenta os nomes das variavéis.
+
+- View(): Mostra o dataframe.
+
+### Operadores Relacionais 
+
+- Igual a: ==
+
+- Diferente de: !=
+
+- Maior que: &gt;
+
+- Maior ou igual: &gt;=
+
+- Menor que: &lt;
+
+- Menor ou igual: &lt;=
+---
+
+### Operadores Lógicos 
+
+- E: **&amp;** Será verdadeiro se os dois forem TRUE 
+
+```r
+x &lt;- 10
+
+x&gt;5 &amp; x&gt;7
+```
+
+```
+## [1] TRUE
+```
+
+- OU: **|** Será verdadeiro se um dos dois forem TRUE
+
+```r
+y &lt;- 8
+y&gt;7 | y&lt;3
+```
+
+```
+## [1] TRUE
+```
+
+- Negação: **!** 
+
+```r
+z &lt;- 3
+(!z&gt;3)
+```
+
+```
+## [1] TRUE
+```
+
+---
+### Estrutura Condicional: **IF** e **ELSE**
+
+
+```r
+situacao &lt;- "Aprovado"
+if(situacao=="Aprovado"){
+  print("Parabéns!")
+}
+```
+
+```
+## [1] "Parabéns!"
+```
+
+```r
+situacao1 &lt;- "Reprovado"
+if(situacao1=="Aprovado"){
+  print("Parabéns")
+}else{
+   print("Tente outra vez!")
+}
+```
+
+```
+## [1] "Tente outra vez!"
+```
+
+```r
+ordem &lt;- c(0,1,0,1,0,1) # 0-venda 1- pra compra
+ordem &lt;- ifelse(ordem==1,"Compra","Venda")
+print(ordem)
+```
+
+```
+## [1] "Venda"  "Compra" "Venda"  "Compra" "Venda"  "Compra"
+```
+
+
+---
+### Estrutura de Repetição: **FOR**
+
+
+```r
+df &lt;- iris
+
+head(df) # possui 6 linhas e 5 colunas
+```
+
+```
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+```
+
+```r
+especies &lt;- as.character(df$Species)
+for(i in 1:6){
+  print(especies[i])
+}
+```
+
+```
+## [1] "setosa"
+## [1] "setosa"
+## [1] "setosa"
+## [1] "setosa"
+## [1] "setosa"
+## [1] "setosa"
+```
+---
+class: inverse, center, middle
+
+# Manipulação de Dados
+
+---
+
+background-position: 55% 5% 
+background-size: 10%
+
+# [Tidyverse](https://www.tidyverse.org/)
+
+&gt;É uma coleção de pacotes R voltados para a ciência de dados. Todos os pacotes compartilham uma mesma filosofia de desenvolvimento, sintaxe e estruturas de dados.
+
+&lt;br&gt;
+&lt;img src="tidyverse_website.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+&lt;img src="tidyverse.png" width="15%" style="display: block; margin: auto;" /&gt;
+---
+
+background-image: url(ggplot22.png)
+background-position: 90% 5% 
+background-size: 50%
+
+### Principais pacotes do Tidyverse
+
+- **ggplot2**: Destinado para criação de gráficos.
+
+- **dplyr**:  Manipulação de dados.
+
+- **tidyr**: Reorganiza os dados 
+
+- **readr**: Leitura dos dados 
+
+- **purrr**: Ferramentas para programação funcional, trabalha com funções e vetores. 
+- **tibble**: Recriação moderna do data frame.
+
+- **magrittr**: Facilita a escrita e leitura do código 
+
+- **stringr**: Manipulação strings. 
+
+- **forcats**: Manipulação com fatores. 
+
+---
+### O Pipe %&gt;%
+
+O objetivo do pipe é ajudá-lo a escrever código de uma maneira que seja mais fácil de ler e entender.
+
+
+
+```r
+library(tidyverse)
+
+notas &lt;- c(9.555,10,9.889)
+
+media &lt;- round(mean(notas),2)
+
+media2 &lt;- notas %&gt;% mean() %&gt;% round(2) # com pipe
+```
+
+#### Importação de arquivos
+
+- read.table()
+
+Pacote [readr](https://rawgit.com/rstudio/cheatsheets/master/data-import.pdf): funções para ler arquivos texto
+
+- read_csv
+- read_csv2
+
+Pacote readxl: função para ler arquivo Excel 
+
+- read_excel
+- read_xls
+
+
+---
+
+### dplyr: Principais verbos
+
+A ideia do pacote **dplyr** é tornar a manipulação de dados explícita.
+
+
+- **filter()**: seleciona linhas
+
+- **arrange()**: ordena de acordo com uma ou mais colunas
+
+- **select()**: seleciona colunas
+
+- **mutate()**: cria/modifica colunas
+
+- **summarise()**: sumariza/agrega colunas
+
+- **group_by()**: agrupa colunas
+
+---
+
+### filter
+
+
+```r
+data("starwars")
+dados &lt;- starwars
+
+dados %&gt;%  filter(species =="Human" &amp; eye_color=="blue") 
+```
+
+```
+## # A tibble: 12 x 13
+##    name  height  mass hair_color skin_color eye_color birth_year gender
+##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; 
+##  1 Luke…    172    77 blond      fair       blue            19   male  
+##  2 Owen…    178   120 brown, gr… light      blue            52   male  
+##  3 Beru…    165    75 brown      light      blue            47   female
+##  4 Anak…    188    84 blond      fair       blue            41.9 male  
+##  5 Wilh…    180    NA auburn, g… fair       blue            64   male  
+##  6 Jek …    180   110 brown      fair       blue            NA   male  
+##  7 Lobot    175    79 none       light      blue            37   male  
+##  8 Mon …    150    NA auburn     fair       blue            48   female
+##  9 Qui-…    193    89 brown      fair       blue            92   male  
+## 10 Fini…    170    NA blond      fair       blue            91   male  
+## 11 Clie…    183    NA brown      fair       blue            82   male  
+## 12 Joca…    167    NA white      fair       blue            NA   female
+## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;
+```
+---
+
+### arrange 
+
+Ordenar as linhas da base de dados conforme uma ou mais variáveis.
+
+
+```r
+# Ordenando os personagens pela altura em cm
+dados %&gt;% arrange(height) # default ordem crescente
+```
+
+```
+## # A tibble: 87 x 13
+##    name  height  mass hair_color skin_color eye_color birth_year gender
+##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; 
+##  1 Yoda      66    17 white      green      brown            896 male  
+##  2 Ratt…     79    15 none       grey, blue unknown           NA male  
+##  3 Wick…     88    20 brown      brown      brown              8 male  
+##  4 Dud …     94    45 none       blue, grey yellow            NA male  
+##  5 R2-D2     96    32 &lt;NA&gt;       white, bl… red               33 &lt;NA&gt;  
+##  6 R4-P…     96    NA none       silver, r… red, blue         NA female
+##  7 R5-D4     97    32 &lt;NA&gt;       white, red red               NA &lt;NA&gt;  
+##  8 Sebu…    112    40 none       grey, red  orange            NA male  
+##  9 Gasg…    122    NA none       white, bl… black             NA male  
+## 10 Watto    137    NA black      blue, grey yellow            NA male  
+## # … with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
+## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;
+```
+---
+### filter e arrange
+
+
+```r
+dados %&gt;%  filter(eye_color=="yellow") %&gt;% arrange(mass)
+```
+
+```
+## # A tibble: 11 x 13
+##    name  height  mass hair_color skin_color eye_color birth_year gender
+##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; 
+##  1 Dud …     94    45 none       blue, grey yellow          NA   male  
+##  2 Zam …    168    55 blonde     fair, gre… yellow          NA   female
+##  3 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   &lt;NA&gt;  
+##  4 Palp…    170    75 grey       pale       yellow          82   male  
+##  5 Dart…    175    80 none       red        yellow          54   male  
+##  6 Pogg…    183    80 none       green      yellow          NA   male  
+##  7 Ki-A…    198    82 white      pale       yellow          92   male  
+##  8 Dext…    198   102 none       brown      yellow          NA   male  
+##  9 Dart…    202   136 none       white      yellow          41.9 male  
+## 10 Watto    137    NA black      blue, grey yellow          NA   male  
+## 11 Yara…    264    NA none       white      yellow          NA   male  
+## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;
+```
+
+```r
+#Dud Bolt  
+```
+
+---
+
+### select
+
+Seleciona as colunas na base de dados.
+
+
+```r
+dados %&gt;% select(name,species,homeworld)
+```
+
+```
+## # A tibble: 87 x 3
+##    name               species homeworld
+##    &lt;chr&gt;              &lt;chr&gt;   &lt;chr&gt;    
+##  1 Luke Skywalker     Human   Tatooine 
+##  2 C-3PO              Droid   Tatooine 
+##  3 R2-D2              Droid   Naboo    
+##  4 Darth Vader        Human   Tatooine 
+##  5 Leia Organa        Human   Alderaan 
+##  6 Owen Lars          Human   Tatooine 
+##  7 Beru Whitesun lars Human   Tatooine 
+##  8 R5-D4              Droid   Tatooine 
+##  9 Biggs Darklighter  Human   Tatooine 
+## 10 Obi-Wan Kenobi     Human   Stewjon  
+## # … with 77 more rows
+```
+
+---
+
+### Funções úteis do select
+
+- **starts_with("h")**: seleciona colunas que começam com "h"
+
+```r
+dados %&gt;% select(starts_with("h")) %&gt;% names()
+```
+
+```
+## [1] "height"     "hair_color" "homeworld"
+```
+
+- **ends_with("or")**: seleciona colunas que terminam com "or"
+
+```r
+dados %&gt;% select(ends_with("or")) %&gt;% names()
+```
+
+```
+## [1] "hair_color" "skin_color" "eye_color"
+```
+
+- **contains("w")**: seleciona colunas que contêm "w"
+
+```r
+dados %&gt;% select(contains("w")) %&gt;% names()
+```
+
+```
+## [1] "homeworld"
+```
+
+---
+
+
+
+### mutate
+
+Cria ou modifica uma coluna na base de dados.
+
+```r
+# criando uma nova variável altura em metros
+dados %&gt;% select(name,height) %&gt;%
+                           mutate(heigth_m=height/100)
+```
+
+```
+## # A tibble: 87 x 3
+##    name               height heigth_m
+##    &lt;chr&gt;               &lt;int&gt;    &lt;dbl&gt;
+##  1 Luke Skywalker        172     1.72
+##  2 C-3PO                 167     1.67
+##  3 R2-D2                  96     0.96
+##  4 Darth Vader           202     2.02
+##  5 Leia Organa           150     1.5 
+##  6 Owen Lars             178     1.78
+##  7 Beru Whitesun lars    165     1.65
+##  8 R5-D4                  97     0.97
+##  9 Biggs Darklighter     183     1.83
+## 10 Obi-Wan Kenobi        182     1.82
+## # … with 77 more rows
+```
+
+---
+
+### summarise
+
+Resume os valores das colunas em um só valor, de acordo com funções como
+média, mediana, min, máx etc.
+
+
+```r
+dados %&gt;% summarise(mean(mass, na.rm = TRUE))
+
+dados %&gt;% summarise(max(mass, na.rm = TRUE))
+
+dados %&gt;% summarise(min(mass, na.rm = TRUE))
+```
+
+```
+## # A tibble: 1 x 1
+##   `mean(mass, na.rm = TRUE)`
+##                        &lt;dbl&gt;
+## 1                       97.3
+## # A tibble: 1 x 1
+##   `max(mass, na.rm = TRUE)`
+##                       &lt;dbl&gt;
+## 1                      1358
+## # A tibble: 1 x 1
+##   `min(mass, na.rm = TRUE)`
+##                       &lt;dbl&gt;
+## 1                        15
+```
+---
+
+### group_by
+
+Agrupa as colunas de uma base de dados. 
+
+
+```r
+dados %&gt;% group_by(species) %&gt;%
+             summarise(Total=n()) %&gt;% 
+                    arrange(desc(Total)) %&gt;% drop_na()
+```
+
+```
+## # A tibble: 37 x 2
+##    species  Total
+##    &lt;chr&gt;    &lt;int&gt;
+##  1 Human       35
+##  2 Droid        5
+##  3 Gungan       3
+##  4 Kaminoan     2
+##  5 Mirialan     2
+##  6 Twi'lek      2
+##  7 Wookiee      2
+##  8 Zabrak       2
+##  9 Aleena       1
+## 10 Besalisk     1
+## # … with 27 more rows
+```
+
+---
+
+
+### ggplot2
+
+- divide os gráficos em componentes semânticos como escalas e camadas.
+
+
+```r
+ggplot(dados, aes(x = eye_color)) + 
+  geom_bar()+
+  coord_flip() # inverte os eixos do gráfico
+```
+
+&lt;img src="Introducao-R_files/figure-html/unnamed-chunk-40-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+### ggplot2
+
+
+```r
+dados %&gt;% mutate(eye_color=fct_infreq(eye_color)) %&gt;%# ordenando os fatores 
+ggplot(aes(x = eye_color)) + 
+  geom_bar()+
+  coord_flip()
+```
+
+&lt;img src="Introducao-R_files/figure-html/unnamed-chunk-41-1.png" style="display: block; margin: auto;" /&gt;
+
+Os levels da variável eye_color estão ordenados.
+---
+
+
+```r
+library(viridis)
+```
+
+```
+## Loading required package: viridisLite
+```
+
+```r
+dados %&gt;% mutate(eye_color=fct_infreq(eye_color)) %&gt;%# ordenando os fatores 
+ggplot(aes(x = eye_color, fill=eye_color)) + 
+  geom_bar()+
+  coord_flip() +
+  theme_bw()+
+   scale_fill_viridis_d(option = "inferno") 
+```
+
+&lt;img src="Introducao-R_files/figure-html/unnamed-chunk-42-1.png" style="display: block; margin: auto;" /&gt;
+---
+
+### ggplot2
+
+
+```r
+dados %&gt;% mutate(eye_color=fct_infreq(eye_color)) %&gt;%# ordenando os fatores 
+ggplot(aes(x = eye_color, fill=eye_color)) + geom_bar()+
+  coord_flip() + theme_bw()+ scale_fill_viridis_d(option = "inferno")+
+   theme(legend.position ="none")
+```
+
+&lt;img src="Introducao-R_files/figure-html/unnamed-chunk-43-1.png" style="display: block; margin: auto;" /&gt;
+---
+### ggplot2 
+
+&lt;img src="Introducao-R_files/figure-html/unnamed-chunk-44-1.png" style="display: block; margin: auto;" /&gt;
+---
+### Referências
+
+- R-ladies SP-  https://github.com/rladies/meetup-presentations_sao-paulo
+
+- UFPR- http://leg.ufpr.br/~walmes/cursoR/data-vis/slides/02-tibble.pdf
+
+- http://ecologia.ib.usp.br/bie5782/doku.php?id=bie5782:03_apostila:01-intro
+
+- Manny Gimond- https://mgimond.github.io/ES218/Week02a.html#data_structures
+
+- R for Data Science- https://r4ds.had.co.nz/
+
+- Allison Horst - https://github.com/allisonhorst/stats-illustrations
+
+- Xarigan - https://bookdown.org/yihui/rmarkdown/xaringan.html
+
+---
+class: inverse, center, middle
+
+# Obrigada!
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
